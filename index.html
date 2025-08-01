@@ -58,6 +58,48 @@
             align-items: center;
         }
 
+        /* 简洁的语言切换按钮样式 */
+        .lang-toggle-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .lang-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 1;
+            transform: translateY(-1px);
+        }
+
+        /* 导航链接玻璃背景样式 */
+        .nav-link-glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px) saturate(180%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .nav-link-glass:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
@@ -66,18 +108,14 @@
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 15px;
             list-style: none;
+            align-items: center;
         }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
+        .nav-links li {
+            display: flex;
+            align-items: center;
         }
 
         .hero {
@@ -612,6 +650,22 @@
                 font-size: 2.5rem;
             }
             
+            /* 移动端导航样式调整 */
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .nav-link-glass {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .lang-toggle-btn {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+            }
+            
             .timeline {
                 display: flex;
                 flex-direction: column;
@@ -727,11 +781,12 @@
         <nav class="nav container">
             <div class="logo">Boundless</div>
             <ul class="nav-links">
-                <li><a href="#introduction">简介</a></li>
-                <li><a href="#technology">技术</a></li>
-                <li><a href="#ecosystem">融资</a></li>
-                <li><a href="#roadmap">历程</a></li>
-                <li><a href="#applications">活动</a></li>
+                <li><button class="lang-toggle-btn" onclick="toggleLanguage()">中/EN</button></li>
+                <li><a href="#introduction" class="nav-link-glass" data-lang="zh">简介</a><a href="#introduction" class="nav-link-glass" data-lang="en" style="display: none;">Introduction</a></li>
+                <li><a href="#technology" class="nav-link-glass" data-lang="zh">技术</a><a href="#technology" class="nav-link-glass" data-lang="en" style="display: none;">Technology</a></li>
+                <li><a href="#ecosystem" class="nav-link-glass" data-lang="zh">融资</a><a href="#ecosystem" class="nav-link-glass" data-lang="en" style="display: none;">Funding</a></li>
+                <li><a href="#roadmap" class="nav-link-glass" data-lang="zh">历程</a><a href="#roadmap" class="nav-link-glass" data-lang="en" style="display: none;">History</a></li>
+                <li><a href="#applications" class="nav-link-glass" data-lang="zh">活动</a><a href="#applications" class="nav-link-glass" data-lang="en" style="display: none;">Activities</a></li>
             </ul>
         </nav>
     </header>
@@ -739,43 +794,64 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1>Boundless 项目报告</h1>
-                <p class="subtitle">首个通用ZK协议，为所有区块链带来丰富的计算能力 - 可验证计算层</p>
+                <h1 data-lang="zh">Boundless 项目报告</h1>
+                <h1 data-lang="en" style="display: none;">Boundless Project Report</h1>
+                <p class="subtitle" data-lang="zh">首个通用ZK协议，为所有区块链带来丰富的计算能力 - 可验证计算层</p>
+                <p class="subtitle" data-lang="en" style="display: none;">The first universal ZK protocol bringing abundant compute to all blockchains - Verifiable Compute Layer</p>
             </div>
         </section>
 
         <section id="introduction" class="section">
             <div class="container">
-                <h2 class="section-title">项目愿景与使命</h2>
+                <h2 class="section-title" data-lang="zh">项目愿景与使命</h2>
+                <h2 class="section-title" data-lang="en" style="display: none;">Project Vision and Mission</h2>
                 
                 <div class="official-quote">
-                    <strong>官方定义：</strong>"<strong>Boundless is the first universal ZK protocol bringing abundant compute to all blockchains.</strong>" - RISC Zero官方博客
+                    <strong data-lang="zh">官方定义：</strong><strong data-lang="en" style="display: none;">Official Definition:</strong>"<strong>Boundless is the first universal ZK protocol bringing abundant compute to all blockchains.</strong>" - RISC Zero官方博客
                 </div>
                 
                 <div class="comparison-grid">
                     <div class="comparison-card">
-                        <h3>🎯 可验证计算层</h3>
-                        <p>Boundless作为可验证计算层，突破传统区块链计算限制，使得复杂计算能够在链下执行，同时保持链上安全性验证。</p>
+                        <h3 data-lang="zh">🎯 可验证计算层</h3>
+                        <h3 data-lang="en" style="display: none;">🎯 Verifiable Compute Layer</h3>
+                        <p data-lang="zh">Boundless作为可验证计算层，突破传统区块链计算限制，使得复杂计算能够在链下执行，同时保持链上安全性验证。</p>
+                        <p data-lang="en" style="display: none;">Boundless serves as a verifiable compute layer, breaking through traditional blockchain computational limitations, enabling complex computations to be executed off-chain while maintaining on-chain security verification.</p>
                         <br>
-                        <p><strong>核心理念：</strong></p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
+                        <p data-lang="zh"><strong>核心理念：</strong></p>
+                        <p data-lang="en" style="display: none;"><strong>Core Concepts:</strong></p>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="zh">
                             <li>无限的链下计算能力</li>
                             <li>通用ZK协议支持</li>
                             <li>全区块链生态兼容</li>
                             <li>可验证的计算结果</li>
                         </ul>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="en" style="display: none;">
+                            <li>Unlimited off-chain computational power</li>
+                            <li>Universal ZK protocol support</li>
+                            <li>Full blockchain ecosystem compatibility</li>
+                            <li>Verifiable computation results</li>
+                        </ul>
                     </div>
 
                     <div class="comparison-card">
-                        <h3>🚀 技术突破</h3>
-                        <p>基于RISC Zero的zkVM技术，Boundless实现了前所未有的计算可扩展性，支持任意复杂度的程序执行。</p>
+                        <h3 data-lang="zh">🚀 技术突破</h3>
+                        <h3 data-lang="en" style="display: none;">🚀 Technical Breakthrough</h3>
+                        <p data-lang="zh">基于RISC Zero的zkVM技术，Boundless实现了前所未有的计算可扩展性，支持任意复杂度的程序执行。</p>
+                        <p data-lang="en" style="display: none;">Based on RISC Zero's zkVM technology, Boundless achieves unprecedented computational scalability, supporting program execution of arbitrary complexity.</p>
                         <br>
-                        <p><strong>关键优势：</strong></p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
+                        <p data-lang="zh"><strong>关键优势：</strong></p>
+                        <p data-lang="en" style="display: none;"><strong>Key Advantages:</strong></p>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="zh">
                             <li>通用ZK计算支持</li>
                             <li>Rust原生开发体验</li>
                             <li>跨链互操作性</li>
                             <li>企业级性能保障</li>
+                        </ul>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="en" style="display: none;">
+                            <li>Universal ZK computation support</li>
+                            <li>Native Rust development experience</li>
+                            <li>Cross-chain interoperability</li>
+                            <li>Enterprise-grade performance guarantees</li>
                         </ul>
                     </div>
                 </div>
@@ -784,80 +860,108 @@
 
         <section id="technology" class="section">
             <div class="container">
-                <h2 class="section-title">核心技术架构</h2>
+                <h2 class="section-title" data-lang="zh">核心技术架构</h2>
+                <h2 class="section-title" data-lang="en" style="display: none;">Core Technical Architecture</h2>
                 
                 <div class="tab-container">
                     <div class="tab-buttons">
-                        <button class="tab-button active" onclick="switchTab(event, 'zkvm')">RISC Zero zkVM</button>
-                        <button class="tab-button" onclick="switchTab(event, 'bonsai')">Bonsai Network</button>
-                        <button class="tab-button" onclick="switchTab(event, 'eigenlayer')">EigenLayer集成</button>
+                        <button class="tab-button active" onclick="switchTab(event, 'zkvm')" data-lang="zh">RISC Zero zkVM</button>
+                        <button class="tab-button active" onclick="switchTab(event, 'zkvm')" data-lang="en" style="display: none;">RISC Zero zkVM</button>
+                        <button class="tab-button" onclick="switchTab(event, 'bonsai')" data-lang="zh">Bonsai Network</button>
+                        <button class="tab-button" onclick="switchTab(event, 'bonsai')" data-lang="en" style="display: none;">Bonsai Network</button>
+                        <button class="tab-button" onclick="switchTab(event, 'eigenlayer')" data-lang="zh">EigenLayer集成</button>
+                        <button class="tab-button" onclick="switchTab(event, 'eigenlayer')" data-lang="en" style="display: none;">EigenLayer Integration</button>
                     </div>
 
                     <div id="zkvm" class="tab-content active">
-                        <h3>🔧 RISC Zero zkVM基础</h3>
-                        <p>Boundless构建在RISC Zero的通用zkVM之上，支持任意Rust程序的ZK证明生成。</p>
+                        <h3 data-lang="zh">🔧 RISC Zero zkVM基础</h3>
+                        <h3 data-lang="en" style="display: none;">🔧 RISC Zero zkVM Foundation</h3>
+                        <p data-lang="zh">Boundless构建在RISC Zero的通用zkVM之上，支持任意Rust程序的ZK证明生成。</p>
+                        <p data-lang="en" style="display: none;">Boundless is built on RISC Zero's general-purpose zkVM, supporting ZK proof generation for arbitrary Rust programs.</p>
                         <br>
                         <div class="tech-features">
                             <div class="feature-card">
                                 <div class="feature-icon">⚡</div>
-                                <h3>高性能计算</h3>
-                                <p>基于STARK证明系统，实现快速的大规模计算证明</p>
+                                <h3 data-lang="zh">高性能计算</h3>
+                                <h3 data-lang="en" style="display: none;">High-Performance Computing</h3>
+                                <p data-lang="zh">基于STARK证明系统，实现快速的大规模计算证明</p>
+                                <p data-lang="en" style="display: none;">Based on STARK proof system, achieving fast large-scale computational proofs</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">🛠️</div>
-                                <h3>通用编程</h3>
-                                <p>支持任意Rust程序，无需专门的约束系统</p>
+                                <h3 data-lang="zh">通用编程</h3>
+                                <h3 data-lang="en" style="display: none;">General Programming</h3>
+                                <p data-lang="zh">支持任意Rust程序，无需专门的约束系统</p>
+                                <p data-lang="en" style="display: none;">Supports arbitrary Rust programs without requiring specialized constraint systems</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">🔒</div>
-                                <h3>密码学安全</h3>
-                                <p>数学级别的安全保障和隐私保护</p>
+                                <h3 data-lang="zh">密码学安全</h3>
+                                <h3 data-lang="en" style="display: none;">Cryptographic Security</h3>
+                                <p data-lang="zh">数学级别的安全保障和隐私保护</p>
+                                <p data-lang="en" style="display: none;">Mathematical-level security guarantees and privacy protection</p>
                             </div>
                         </div>
                     </div>
 
                     <div id="bonsai" class="tab-content">
-                        <h3>🌐 Bonsai证明网络</h3>
-                        <p>Bonsai为Boundless提供去中心化的证明生成基础设施，实现可扩展的ZK计算服务。</p>
+                        <h3 data-lang="zh">🌐 Bonsai证明网络</h3>
+                        <h3 data-lang="en" style="display: none;">🌐 Bonsai Proof Network</h3>
+                        <p data-lang="zh">Bonsai为Boundless提供去中心化的证明生成基础设施，实现可扩展的ZK计算服务。</p>
+                        <p data-lang="en" style="display: none;">Bonsai provides decentralized proof generation infrastructure for Boundless, enabling scalable ZK computation services.</p>
                         <br>
                         <div class="tech-features">
                             <div class="feature-card">
                                 <div class="feature-icon">🌍</div>
-                                <h3>去中心化架构</h3>
-                                <p>分布式证明生成，确保网络健壮性</p>
+                                <h3 data-lang="zh">去中心化架构</h3>
+                                <h3 data-lang="en" style="display: none;">Decentralized Architecture</h3>
+                                <p data-lang="zh">分布式证明生成，确保网络健壮性</p>
+                                <p data-lang="en" style="display: none;">Distributed proof generation ensuring network robustness</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">📈</div>
-                                <h3>弹性扩容</h3>
-                                <p>动态调整算力资源，满足各种规模需求</p>
+                                <h3 data-lang="zh">弹性扩容</h3>
+                                <h3 data-lang="en" style="display: none;">Elastic Scaling</h3>
+                                <p data-lang="zh">动态调整算力资源，满足各种规模需求</p>
+                                <p data-lang="en" style="display: none;">Dynamically adjusts computing resources to meet demands of various scales</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">💰</div>
-                                <h3>成本优化</h3>
-                                <p>按需付费模式，大幅降低gas成本</p>
+                                <h3 data-lang="zh">成本优化</h3>
+                                <h3 data-lang="en" style="display: none;">Cost Optimization</h3>
+                                <p data-lang="zh">按需付费模式，大幅降低gas成本</p>
+                                <p data-lang="en" style="display: none;">Pay-as-you-go model significantly reducing gas costs</p>
                             </div>
                         </div>
                     </div>
 
                     <div id="eigenlayer" class="tab-content">
-                        <h3>🏗️ EigenLayer安全集成</h3>
-                        <p>Boundless与EigenLayer深度集成，通过ZK证明将slashing机制的gas成本降低99.9%。</p>
+                        <h3 data-lang="zh">🏗️ EigenLayer安全集成</h3>
+                        <h3 data-lang="en" style="display: none;">🏗️ EigenLayer Security Integration</h3>
+                        <p data-lang="zh">Boundless与EigenLayer深度集成，通过ZK证明将slashing机制的gas成本降低99.9%。</p>
+                        <p data-lang="en" style="display: none;">Boundless deeply integrates with EigenLayer, reducing slashing mechanism gas costs by 99.9% through ZK proofs.</p>
                         <br>
                         <div class="tech-features">
                             <div class="feature-card">
                                 <div class="feature-icon">🛡️</div>
-                                <h3>安全保障</h3>
-                                <p>继承以太坊级别的安全性</p>
+                                <h3 data-lang="zh">安全保障</h3>
+                                <h3 data-lang="en" style="display: none;">Security Guarantee</h3>
+                                <p data-lang="zh">继承以太坊级别的安全性</p>
+                                <p data-lang="en" style="display: none;">Inherits Ethereum-level security</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">⚡</div>
-                                <h3>效率提升</h3>
-                                <p>99.9%的gas成本降低</p>
+                                <h3 data-lang="zh">效率提升</h3>
+                                <h3 data-lang="en" style="display: none;">Efficiency Improvement</h3>
+                                <p data-lang="zh">99.9%的gas成本降低</p>
+                                <p data-lang="en" style="display: none;">99.9% gas cost reduction</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">🔗</div>
-                                <h3>去中心化</h3>
-                                <p>保持去中心化的安全模型</p>
+                                <h3 data-lang="zh">去中心化</h3>
+                                <h3 data-lang="en" style="display: none;">Decentralization</h3>
+                                <p data-lang="zh">保持去中心化的安全模型</p>
+                                <p data-lang="en" style="display: none;">Maintains decentralized security model</p>
                             </div>
                         </div>
                     </div>
@@ -867,47 +971,72 @@
 
         <section id="ecosystem" class="section">
             <div class="container">
-                <h2 class="section-title">融资与生态</h2>
+                <h2 class="section-title" data-lang="zh">融资与生态</h2>
+                <h2 class="section-title" data-lang="en" style="display: none;">Funding and Ecosystem</h2>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-number">$54M</div>
-                        <div>总融资额度</div>
+                        <div data-lang="zh">总融资额度</div>
+                        <div data-lang="en" style="display: none;">Total Funding</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">500+</div>
-                        <div>开发者社区</div>
+                        <div data-lang="zh">开发者社区</div>
+                        <div data-lang="en" style="display: none;">Developer Community</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">50+</div>
-                        <div>生态项目</div>
+                        <div data-lang="zh">生态项目</div>
+                        <div data-lang="en" style="display: none;">Ecosystem Projects</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">99.9%</div>
-                        <div>gas成本降低</div>
+                        <div data-lang="zh">gas成本降低</div>
+                        <div data-lang="en" style="display: none;">Gas Cost Reduction</div>
                     </div>
                 </div>
 
                 <div class="comparison-grid">
                     <div class="comparison-card">
-                        <h3>💼 RISC Zero 母公司</h3>
-                        <p><strong>成立时间：</strong>2021年</p>
-                        <p><strong>创始人：</strong>Brian Retford, Jeremy Bruestle</p>
-                        <p><strong>现任CEO：</strong>Jeremy Bruestle</p>
-                        <p><strong>总部：</strong>美国加州</p>
-                        <p><strong>团队规模：</strong>50+ 核心团队成员</p>
+                        <h3 data-lang="zh">💼 RISC Zero 母公司</h3>
+                        <h3 data-lang="en" style="display: none;">💼 RISC Zero Parent Company</h3>
+                        <p data-lang="zh"><strong>成立时间：</strong>2021年</p>
+                        <p data-lang="en" style="display: none;"><strong>Founded:</strong> 2021</p>
+                        <p data-lang="zh"><strong>创始人：</strong>Brian Retford, Jeremy Bruestle</p>
+                        <p data-lang="en" style="display: none;"><strong>Founders:</strong> Brian Retford, Jeremy Bruestle</p>
+                        <p data-lang="zh"><strong>现任CEO：</strong>Jeremy Bruestle</p>
+                        <p data-lang="en" style="display: none;"><strong>Current CEO:</strong> Jeremy Bruestle</p>
+                        <p data-lang="zh"><strong>总部：</strong>美国加州</p>
+                        <p data-lang="en" style="display: none;"><strong>Headquarters:</strong> California, USA</p>
+                        <p data-lang="zh"><strong>团队规模：</strong>50+ 核心团队成员</p>
+                        <p data-lang="en" style="display: none;"><strong>Team Size:</strong> 50+ core team members</p>
                         <br>
-                        <p><strong>融资历程：</strong></p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
+                        <p data-lang="zh"><strong>融资历程：</strong></p>
+                        <p data-lang="en" style="display: none;"><strong>Funding History:</strong></p>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="zh">
                             <li>Pre种子轮：$2M (200万美金)</li>
                             <li>种子轮：$12M (1200万美元)</li>
                             <li>A轮：$40M (4000万美元)</li>
                             <li><strong>总计：$54M (5400万美金)</strong></li>
                         </ul>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="en" style="display: none;">
+                            <li>Pre-seed: $2M</li>
+                            <li>Seed: $12M</li>
+                            <li>Series A: $40M</li>
+                            <li><strong>Total: $54M</strong></li>
+                        </ul>
                         <br>
-                        <p><strong>主要投资者：</strong></p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
+                        <p data-lang="zh"><strong>主要投资者：</strong></p>
+                        <p data-lang="en" style="display: none;"><strong>Major Investors:</strong></p>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="zh">
                             <li>Blockchain Capital (A轮领投)</li>
+                            <li>Bain Capital Crypto</li>
+                            <li>Robot Ventures</li>
+                            <li>Coinbase Ventures</li>
+                        </ul>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="en" style="display: none;">
+                            <li>Blockchain Capital (Series A Lead)</li>
                             <li>Bain Capital Crypto</li>
                             <li>Robot Ventures</li>
                             <li>Coinbase Ventures</li>
@@ -915,21 +1044,36 @@
                     </div>
 
                     <div class="comparison-card">
-                        <h3>🤝 战略合作与集成</h3>
-                        <p><strong>核心集成：</strong></p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
+                        <h3 data-lang="zh">🤝 战略合作与集成</h3>
+                        <h3 data-lang="en" style="display: none;">🤝 Strategic Partnerships & Integrations</h3>
+                        <p data-lang="zh"><strong>核心集成：</strong></p>
+                        <p data-lang="en" style="display: none;"><strong>Core Integrations:</strong></p>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="zh">
                             <li>EigenLayer - 安全机制集成</li>
                             <li>Optimism OP Stack</li>
                             <li>Celestia - Blobstream Zero</li>
                             <li>Citrea - Bitcoin扩容</li>
                         </ul>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="en" style="display: none;">
+                            <li>EigenLayer - Security Integration</li>
+                            <li>Optimism OP Stack</li>
+                            <li>Celestia - Blobstream Zero</li>
+                            <li>Citrea - Bitcoin Scaling</li>
+                        </ul>
                         <br>
-                        <p><strong>技术支持：</strong></p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
+                        <p data-lang="zh"><strong>技术支持：</strong></p>
+                        <p data-lang="en" style="display: none;"><strong>Technical Support:</strong></p>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="zh">
                             <li>Steel框架 - EVM兼容</li>
                             <li>Zeth - Type Zero zkEVM</li>
                             <li>Kailua - 混合架构</li>
                             <li>OP Kailua - ZK Rollup升级</li>
+                        </ul>
+                        <ul style="padding-left: 20px; margin-top: 10px;" data-lang="en" style="display: none;">
+                            <li>Steel Framework - EVM Compatible</li>
+                            <li>Zeth - Type Zero zkEVM</li>
+                            <li>Kailua - Hybrid Architecture</li>
+                            <li>OP Kailua - ZK Rollup Upgrade</li>
                         </ul>
                     </div>
                 </div>
@@ -938,135 +1082,175 @@
 
         <section id="roadmap" class="section">
             <div class="container">
-                <h2 class="section-title">发展历程</h2>
+                <h2 class="section-title" data-lang="zh">发展历程</h2>
+                <h2 class="section-title" data-lang="en" style="display: none;">Development History</h2>
                 
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2021年</div>
+                            <div class="timeline-date" data-lang="zh">2021年</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2021</div>
                             <div class="timeline-content">
-                                <h3>🏢 RISC Zero成立</h3>
-                                <p>Brian Retford和Jeremy Bruestle创立公司，开始研发通用zkVM技术</p>
+                                <h3 data-lang="zh">🏢 RISC Zero成立</h3>
+                                <h3 data-lang="en" style="display: none;">🏢 RISC Zero Founded</h3>
+                                <p data-lang="zh">Brian Retford和Jeremy Bruestle创立公司，开始研发通用zkVM技术</p>
+                                <p data-lang="en" style="display: none;">Brian Retford and Jeremy Bruestle founded the company, beginning development of general-purpose zkVM technology</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2022年</div>
+                            <div class="timeline-date" data-lang="zh">2022年</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2022</div>
                             <div class="timeline-content">
-                                <h3>💰 Pre种子轮融资</h3>
-                                <p>完成$2M Pre种子轮融资，启动技术研发</p>
+                                <h3 data-lang="zh">💰 Pre种子轮融资</h3>
+                                <h3 data-lang="en" style="display: none;">💰 Pre-seed Funding</h3>
+                                <p data-lang="zh">完成$2M Pre种子轮融资，启动技术研发</p>
+                                <p data-lang="en" style="display: none;">Completed $2M pre-seed funding, initiated technology development</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2023年</div>
+                            <div class="timeline-date" data-lang="zh">2023年</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2023</div>
                             <div class="timeline-content">
-                                <h3>🌱 种子轮融资</h3>
-                                <p>完成$12M种子轮融资，团队扩张和技术突破</p>
+                                <h3 data-lang="zh">🌱 种子轮融资</h3>
+                                <h3 data-lang="en" style="display: none;">🌱 Seed Funding</h3>
+                                <p data-lang="zh">完成$12M种子轮融资，团队扩张和技术突破</p>
+                                <p data-lang="en" style="display: none;">Completed $12M seed funding, team expansion and technical breakthroughs</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2023 Q4</div>
+                            <div class="timeline-date" data-lang="zh">2023 Q4</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2023 Q4</div>
                             <div class="timeline-content">
-                                <h3>🔧 zkVM 1.0发布</h3>
-                                <p>世界首个通用zkVM正式发布，行业领先性能基准</p>
+                                <h3 data-lang="zh">🔧 zkVM 1.0发布</h3>
+                                <h3 data-lang="en" style="display: none;">🔧 zkVM 1.0 Launch</h3>
+                                <p data-lang="zh">世界首个通用zkVM正式发布，行业领先性能基准</p>
+                                <p data-lang="en" style="display: none;">World's first general-purpose zkVM officially launched with industry-leading performance benchmarks</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q1</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q1</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q1</div>
                             <div class="timeline-content">
-                                <h3>🚀 Series A融资</h3>
-                                <p>完成$40M Series A轮融资，Blockchain Capital领投</p>
+                                <h3 data-lang="zh">🚀 Series A融资</h3>
+                                <h3 data-lang="en" style="display: none;">🚀 Series A Funding</h3>
+                                <p data-lang="zh">完成$40M Series A轮融资，Blockchain Capital领投</p>
+                                <p data-lang="en" style="display: none;">Completed $40M Series A funding, led by Blockchain Capital</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q2</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q2</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q2</div>
                             <div class="timeline-content">
-                                <h3>🌟 Boundless发布</h3>
-                                <p>正式宣布Boundless可验证计算层，开启Road to Mainnet</p>
+                                <h3 data-lang="zh">🌟 Boundless发布</h3>
+                                <h3 data-lang="en" style="display: none;">🌟 Boundless Launch</h3>
+                                <p data-lang="zh">正式宣布Boundless可验证计算层，开启Road to Mainnet</p>
+                                <p data-lang="en" style="display: none;">Officially announced Boundless verifiable compute layer, starting Road to Mainnet</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q2</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q2</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q2</div>
                             <div class="timeline-content">
-                                <h3>🎮 DOOM ZK演示</h3>
-                                <p>在zkVM上运行经典游戏DOOM，展示技术能力</p>
+                                <h3 data-lang="zh">🎮 DOOM ZK演示</h3>
+                                <h3 data-lang="en" style="display: none;">🎮 DOOM ZK Demo</h3>
+                                <p data-lang="zh">在zkVM上运行经典游戏DOOM，展示技术能力</p>
+                                <p data-lang="en" style="display: none;">Running classic game DOOM on zkVM, demonstrating technical capabilities</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q3</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q3</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q3</div>
                             <div class="timeline-content">
-                                <h3>🔗 EigenLayer集成</h3>
-                                <p>与EigenLayer深度集成，slashing成本降低99.9%</p>
+                                <h3 data-lang="zh">🔗 EigenLayer集成</h3>
+                                <h3 data-lang="en" style="display: none;">🔗 EigenLayer Integration</h3>
+                                <p data-lang="zh">与EigenLayer深度集成，slashing成本降低99.9%</p>
+                                <p data-lang="en" style="display: none;">Deep integration with EigenLayer, reducing slashing costs by 99.9%</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q3</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q3</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q3</div>
                             <div class="timeline-content">
-                                <h3>🛠️ Steel 1.0发布</h3>
-                                <p>EVM智能合约执行证明器，突破30M gas限制</p>
+                                <h3 data-lang="zh">🛠️ Steel 1.0发布</h3>
+                                <h3 data-lang="en" style="display: none;">🛠️ Steel 1.0 Launch</h3>
+                                <p data-lang="zh">EVM智能合约执行证明器，突破30M gas限制</p>
+                                <p data-lang="en" style="display: none;">EVM smart contract execution prover, breaking 30M gas limit</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q4</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q4</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q4</div>
                             <div class="timeline-content">
-                                <h3>⚡ Steel 2.0升级</h3>
-                                <p>ZK协处理器重大升级，支持历史状态验证</p>
+                                <h3 data-lang="zh">⚡ Steel 2.0升级</h3>
+                                <h3 data-lang="en" style="display: none;">⚡ Steel 2.0 Upgrade</h3>
+                                <p data-lang="zh">ZK协处理器重大升级，支持历史状态验证</p>
+                                <p data-lang="en" style="display: none;">Major ZK coprocessor upgrade, supporting historical state verification</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q4</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q4</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q4</div>
                             <div class="timeline-content">
-                                <h3>🔄 OP Kailua发布</h3>
-                                <p>OP链ZK Rollup升级方案，混合架构创新</p>
+                                <h3 data-lang="zh">🔄 OP Kailua发布</h3>
+                                <h3 data-lang="en" style="display: none;">🔄 OP Kailua Launch</h3>
+                                <p data-lang="zh">OP链ZK Rollup升级方案，混合架构创新</p>
+                                <p data-lang="en" style="display: none;">OP Chain ZK Rollup upgrade solution with hybrid architecture innovation</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2024 Q4</div>
+                            <div class="timeline-date" data-lang="zh">2024 Q4</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2024 Q4</div>
                             <div class="timeline-content">
-                                <h3>👑 Jeremy Bruestle任CEO</h3>
-                                <p>联合创始人Jeremy接任CEO，领导下一阶段发展</p>
+                                <h3 data-lang="zh">👑 Jeremy Bruestle任CEO</h3>
+                                <h3 data-lang="en" style="display: none;">👑 Jeremy Bruestle as CEO</h3>
+                                <p data-lang="zh">联合创始人Jeremy接任CEO，领导下一阶段发展</p>
+                                <p data-lang="en" style="display: none;">Co-founder Jeremy assumes CEO role, leading next phase development</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-wrapper">
-                            <div class="timeline-date">2025年</div>
+                            <div class="timeline-date" data-lang="zh">2025年</div>
+                            <div class="timeline-date" data-lang="en" style="display: none;">2025</div>
                             <div class="timeline-content">
-                                <h3>🌐 Boundless主网启动</h3>
-                                <p>Boundless主网正式上线，开启去中心化计算新时代</p>
+                                <h3 data-lang="zh">🌐 Boundless主网启动</h3>
+                                <h3 data-lang="en" style="display: none;">🌐 Boundless Mainnet Launch</h3>
+                                <p data-lang="zh">Boundless主网正式上线，开启去中心化计算新时代</p>
+                                <p data-lang="en" style="display: none;">Boundless mainnet officially launches, ushering in a new era of decentralized computing</p>
                             </div>
                         </div>
                     </div>
@@ -1077,82 +1261,108 @@
         <section id="applications" class="section">
             <div class="container">
                 
-                <h2 style="text-align: center; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-size: 2.2rem; font-weight: 700;">过往活动</h2>
+                <h2 style="text-align: center; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-size: 2.2rem; font-weight: 700;" data-lang="zh">过往活动</h2>
+                <h2 style="text-align: center; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-size: 2.2rem; font-weight: 700; display: none;" data-lang="en">Past Activities</h2>
                 <div class="applications">
                     <div class="app-card">
                         <div class="app-icon">🎨</div>
-                        <h3>Boundless NFT活动</h3>
-                        <p><a href="https://x.com/boundless_xyz/status/1889412993328537973" target="_blank" style="color: white; text-decoration: underline;">Free Mint活动</a>，公开mint持续48小时，最终Mint总数达到1,587,211个</p>
+                        <h3 data-lang="zh">Boundless NFT活动</h3>
+                        <h3 data-lang="en" style="display: none;">Boundless NFT Activity</h3>
+                        <p data-lang="zh"><a href="https://x.com/boundless_xyz/status/1889412993328537973" target="_blank" style="color: white; text-decoration: underline;">Free Mint活动</a>，公开mint持续48小时，最终Mint总数达到1,587,211个</p>
+                        <p data-lang="en" style="display: none;"><a href="https://x.com/boundless_xyz/status/1889412993328537973" target="_blank" style="color: white; text-decoration: underline;">Free Mint Event</a>, lasting 48 hours with a total of 1,587,211 mints</p>
                     </div>
 
                     <div class="app-card">
                         <div class="app-icon">📝</div>
-                        <h3>白皮书签名活动</h3>
-                        <p>社区成员参与白皮书发布仪式，截取白皮书中感兴趣的内容发布在推特上</p>
+                        <h3 data-lang="zh">白皮书签名活动</h3>
+                        <h3 data-lang="en" style="display: none;">Whitepaper Signing Event</h3>
+                        <p data-lang="zh">社区成员参与白皮书发布仪式，截取白皮书中感兴趣的内容发布在推特上</p>
+                        <p data-lang="en" style="display: none;">Community members participate in whitepaper launch ceremony, sharing interesting content from the whitepaper on Twitter</p>
                     </div>
 
                     <div class="app-card">
                         <div class="app-icon">🏆</div>
-                        <h3>ETHDenver 2024</h3>
-                        <p>RISC Zero在ETHDenver颁发超过$20K奖金，展示zkVM技术</p>
+                        <h3 data-lang="zh">ETHDenver 2024</h3>
+                        <h3 data-lang="en" style="display: none;">ETHDenver 2024</h3>
+                        <p data-lang="zh">RISC Zero在ETHDenver颁发超过$20K奖金，展示zkVM技术</p>
+                        <p data-lang="en" style="display: none;">RISC Zero awarded over $20K in prizes at ETHDenver, showcasing zkVM technology</p>
                     </div>
 
                     <div class="app-card">
                         <div class="app-icon">🎯</div>
-                        <h3>ScalingETH Hackathon</h3>
-                        <p>RISC Zero $10K奖金池，推动ZK技术和去中心化应用发展</p>
+                        <h3 data-lang="zh">ScalingETH Hackathon</h3>
+                        <h3 data-lang="en" style="display: none;">ScalingETH Hackathon</h3>
+                        <p data-lang="zh">RISC Zero $10K奖金池，推动ZK技术和去中心化应用发展</p>
+                        <p data-lang="en" style="display: none;">RISC Zero $10K prize pool, promoting ZK technology and decentralized application development</p>
                     </div>
 
                     <div class="app-card">
                         <div class="app-icon">🍓</div>
-                        <h3>Berry证明活动</h3>
-                        <p>在推特上发布你的Berry证明，某些被选中的用户会被邀请加入私人TG小组</p>
+                        <h3 data-lang="zh">Berry证明活动</h3>
+                        <h3 data-lang="en" style="display: none;">Berry Proof Activity</h3>
+                        <p data-lang="zh">在推特上发布你的Berry证明，某些被选中的用户会被邀请加入私人TG小组</p>
+                        <p data-lang="en" style="display: none;">Post your Berry proof on Twitter, selected users will be invited to join private Telegram groups</p>
                     </div>
 
                     <div class="app-card">
                         <div class="app-icon">🌟</div>
-                        <h3>可信设置仪式</h3>
-                        <p>社区参与<a href="https://ceremony.pse.dev/projects/RISC%20Zero%20STARK-to-SNARK%20Prover" target="_blank" style="color: white; text-decoration: underline;">RISC Zero可信设置仪式</a>，确保系统安全性</p>
+                        <h3 data-lang="zh">可信设置仪式</h3>
+                        <h3 data-lang="en" style="display: none;">Trusted Setup Ceremony</h3>
+                        <p data-lang="zh">社区参与<a href="https://ceremony.pse.dev/projects/RISC%20Zero%20STARK-to-SNARK%20Prover" target="_blank" style="color: white; text-decoration: underline;">RISC Zero可信设置仪式</a>，确保系统安全性</p>
+                        <p data-lang="en" style="display: none;">Community participation in <a href="https://ceremony.pse.dev/projects/RISC%20Zero%20STARK-to-SNARK%20Prover" target="_blank" style="color: white; text-decoration: underline;">RISC Zero trusted setup ceremony</a> to ensure system security</p>
                     </div>
                 </div>
 
                 <div style="margin-top: 50px;">
-                    <h2 style="text-align: center; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-size: 2.2rem; font-weight: 700; margin-top: 80px;">目前交互方向</h2>
+                    <h2 style="text-align: center; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-size: 2.2rem; font-weight: 700;" data-lang="zh">目前交互方向</h2>
+                    <h2 style="text-align: center; margin-bottom: 40px; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-size: 2.2rem; font-weight: 700; margin-top: 80px; display: none;" data-lang="en">Current Interaction Opportunities</h2>
                     <div class="applications" style="margin-bottom: 30px;">
                         <div class="app-card">
                             <div class="app-icon">📱</div>
-                            <h3>Boundless官推每日挑战</h3>
-                            <p>参与<a href="https://twitter.com/boundlessxyz" target="_blank" style="color: white; text-decoration: underline;">@BoundlessXYZ</a>每日挑战活动，有机会获得Discord专属role身份</p>
+                            <h3 data-lang="zh">Boundless官推每日挑战</h3>
+                            <h3 data-lang="en" style="display: none;">Boundless Daily Twitter Challenge</h3>
+                            <p data-lang="zh">参与<a href="https://x.com/boundless_xyz" target="_blank" style="color: white; text-decoration: underline;">@boundless_xyz</a>每日挑战活动，有机会获得Discord专属role身份</p>
+                            <p data-lang="en" style="display: none;">Participate in <a href="https://x.com/boundless_xyz" target="_blank" style="color: white; text-decoration: underline;">@boundless_xyz</a> daily challenges to earn exclusive Discord roles</p>
                         </div>
 
                         <div class="app-card">
                             <div class="app-icon">📡</div>
-                            <h3>Signal活动</h3>
-                            <p>完成<a href="https://signal.beboundless.xyz/rewards#tiers" target="_blank" style="color: white; text-decoration: underline;">每周任务</a>，解锁不同等级的徽章，获得更多ICO折扣优惠</p>
+                            <h3 data-lang="zh">Signal活动</h3>
+                            <h3 data-lang="en" style="display: none;">Signal Activity</h3>
+                            <p data-lang="zh">完成<a href="https://signal.beboundless.xyz/rewards#tiers" target="_blank" style="color: white; text-decoration: underline;">每周任务</a>，解锁不同等级的徽章，获得更多ICO折扣优惠</p>
+                            <p data-lang="en" style="display: none;">Complete <a href="https://signal.beboundless.xyz/rewards#tiers" target="_blank" style="color: white; text-decoration: underline;">weekly tasks</a> to unlock different tier badges and get more ICO discounts</p>
                         </div>
 
                         <div class="app-card">
                             <div class="app-icon">⛏️</div>
-                            <h3>ZK Mining活动</h3>
-                            <p>与其他矿工<a href="https://mining.beboundless.xyz/" target="_blank" style="color: white; text-decoration: underline;">竞争0.5%的ZKC</a>代币，体验去中心化挖矿</p>
+                            <h3 data-lang="zh">ZK Mining活动</h3>
+                            <h3 data-lang="en" style="display: none;">ZK Mining Activity</h3>
+                            <p data-lang="zh">与其他矿工<a href="https://mining.beboundless.xyz/" target="_blank" style="color: white; text-decoration: underline;">竞争0.5%的ZKC</a>代币，体验去中心化挖矿</p>
+                            <p data-lang="en" style="display: none;">Compete with other miners for <a href="https://mining.beboundless.xyz/" target="_blank" style="color: white; text-decoration: underline;">0.5% of ZKC tokens</a>, experience decentralized mining</p>
                         </div>
 
                         <div class="app-card">
                             <div class="app-icon">💬</div>
-                            <h3>Discord活跃计划</h3>
-                            <p>在<a href="https://discord.gg/TrZnav3F" target="_blank" style="color: white; text-decoration: underline;">Boundless Discord</a>保持活跃，获得社区专属role权限</p>
+                            <h3 data-lang="zh">Discord活跃计划</h3>
+                            <h3 data-lang="en" style="display: none;">Discord Activity Plan</h3>
+                            <p data-lang="zh">在<a href="https://discord.gg/TrZnav3F" target="_blank" style="color: white; text-decoration: underline;">Boundless Discord</a>保持活跃，获得社区专属role权限</p>
+                            <p data-lang="en" style="display: none;">Stay active in <a href="https://discord.gg/TrZnav3F" target="_blank" style="color: white; text-decoration: underline;">Boundless Discord</a> to earn exclusive community role privileges</p>
                         </div>
 
                         <div class="app-card">
                             <div class="app-icon">🗣️</div>
-                            <h3>YAP活动</h3>
-                            <p><a href="https://yaps.kaito.ai/boundless" target="_blank" style="color: white; text-decoration: underline;">YAP奖励即将公布</a>，努力在社区榜单上爬到更高排名</p>
+                            <h3 data-lang="zh">YAP活动</h3>
+                            <h3 data-lang="en" style="display: none;">YAP Activity</h3>
+                            <p data-lang="zh"><a href="https://yaps.kaito.ai/boundless" target="_blank" style="color: white; text-decoration: underline;">YAP奖励即将公布</a>，努力在社区榜单上爬到更高排名</p>
+                            <p data-lang="en" style="display: none;"><a href="https://yaps.kaito.ai/boundless" target="_blank" style="color: white; text-decoration: underline;">YAP rewards to be announced</a>, strive to climb higher on community leaderboards</p>
                         </div>
 
                         <div class="app-card">
                             <div class="app-icon">🍓</div>
-                            <h3>树莓军计划</h3>
-                            <p><a href="https://x.com/RiscZeroCN/status/1949757113892286699" target="_blank" style="color: white; text-decoration: underline;">加入树莓军计划</a>，与RISC Zero中文社区一起构建ZK生态</p>
+                            <h3 data-lang="zh">树莓军计划</h3>
+                            <h3 data-lang="en" style="display: none;">Raspberry Army Plan</h3>
+                            <p data-lang="zh"><a href="https://x.com/RiscZeroCN/status/1949757113892286699" target="_blank" style="color: white; text-decoration: underline;">加入树莓军计划</a>，与RISC Zero中文社区一起构建ZK生态</p>
+                            <p data-lang="en" style="display: none;"><a href="https://x.com/RiscZeroCN/status/1949757113892286699" target="_blank" style="color: white; text-decoration: underline;">Join the Raspberry Army Plan</a> to build ZK ecosystem with RISC Zero Chinese community</p>
                         </div>
                     </div>
 
@@ -1163,20 +1373,27 @@
 
         <section class="cta-section">
             <div class="container">
-                <h2>探索 Boundless 生态系统</h2>
-                <p style="margin: 20px 0; font-size: 1.2rem;">加入可验证计算的未来，体验无限制的区块链应用</p>
-                <button class="cta-button" onclick="window.open('https://www.beboundless.xyz', '_blank')">Boundless官网</button>
-                <button class="cta-button" onclick="window.open('https://x.com/boundless_xyz', '_blank')">官方推特</button>
+                <h2 data-lang="zh">探索 Boundless 生态系统</h2>
+                <h2 data-lang="en" style="display: none;">Explore Boundless Ecosystem</h2>
+                <p style="margin: 20px 0; font-size: 1.2rem;" data-lang="zh">加入可验证计算的未来，体验无限制的区块链应用</p>
+                <p style="margin: 20px 0; font-size: 1.2rem;" data-lang="en" style="display: none;">Join the future of verifiable computation and experience unlimited blockchain applications</p>
+                <button class="cta-button" onclick="window.open('https://www.beboundless.xyz', '_blank')" data-lang="zh">Boundless官网</button>
+                <button class="cta-button" onclick="window.open('https://www.beboundless.xyz', '_blank')" data-lang="en" style="display: none;">Boundless Official</button>
+                <button class="cta-button" onclick="window.open('https://x.com/boundless_xyz', '_blank')" data-lang="zh">官方推特</button>
+                <button class="cta-button" onclick="window.open('https://x.com/boundless_xyz', '_blank')" data-lang="en" style="display: none;">Official Twitter</button>
                 <button class="cta-button" onclick="window.open('https://discord.gg/TrZnav3F', '_blank')">Discord</button>
-                <button class="cta-button" onclick="window.open('https://docs.beboundless.xyz', '_blank')">开发文档</button>
+                <button class="cta-button" onclick="window.open('https://docs.beboundless.xyz', '_blank')" data-lang="zh">开发文档</button>
+                <button class="cta-button" onclick="window.open('https://docs.beboundless.xyz', '_blank')" data-lang="en" style="display: none;">Documentation</button>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>此报告基于公开信息整理，Boundless持续发展中，最新信息请关注官方发布。</p>
-            <p style="margin-top: 10px;">制作：<a href="https://x.com/GXingPing" style="color: white; text-decoration: underline;">金灰</a></p>
+            <p data-lang="zh">此报告基于公开信息整理，Boundless持续发展中，最新信息请关注官方发布。</p>
+            <p data-lang="en" style="display: none;">This report is compiled from public information. Boundless is continuously developing, please follow official releases for the latest information.</p>
+            <p style="margin-top: 10px;" data-lang="zh">制作：<a href="https://x.com/GXingPing" style="color: white; text-decoration: underline;">金灰</a></p>
+            <p style="margin-top: 10px;" data-lang="en" style="display: none;">Created by: <a href="https://x.com/GXingPing" style="color: white; text-decoration: underline;">金灰</a></p>
         </div>
     </footer>
 
@@ -1198,6 +1415,30 @@
             evt.currentTarget.classList.add("active");
         }
 
+        // 语言切换状态
+        let currentLanguage = 'zh';
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+            
+            if (currentLanguage === 'zh') {
+                // 显示中文内容，隐藏英文内容
+                document.querySelectorAll('[data-lang="zh"]').forEach(el => {
+                    el.style.display = '';
+                });
+                document.querySelectorAll('[data-lang="en"]').forEach(el => {
+                    el.style.display = 'none';
+                });
+            } else {
+                // 显示英文内容，隐藏中文内容
+                document.querySelectorAll('[data-lang="zh"]').forEach(el => {
+                    el.style.display = 'none';
+                });
+                document.querySelectorAll('[data-lang="en"]').forEach(el => {
+                    el.style.display = '';
+                });
+            }
+        }
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
